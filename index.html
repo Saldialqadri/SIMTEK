@@ -13,8 +13,48 @@
 </head>
 <body>
 
+<!-- ==================== HALAMAN LOGIN ==================== -->
+<div id="page-login">
+  <div class="welcome-bg-shapes">
+    <div class="wshape wshape-1"></div>
+    <div class="wshape wshape-2"></div>
+    <div class="wshape wshape-3"></div>
+  </div>
+  <div class="login-container card">
+    <div class="login-header">
+      <div class="logo-icon" style="justify-content:center; margin: 0 auto 1.5rem; width: max-content; background: rgba(255,255,255,0.05);">
+        <img src="logo-simtek.png" alt="Logo SIMTEK" style="height: 50px;" />
+      </div>
+      <h2>Login </h2>
+      <p>Silakan masuk untuk menggunakan simulasi iuran dan manfaat.</p>
+    </div>
+    <form id="loginForm" onsubmit="handleLogin(event)">
+      <div class="form-group">
+        <label for="loginUsername">Username</label>
+        <input type="text" id="loginUsername" placeholder="Masukkan username" required />
+      </div>
+      <div class="form-group" style="margin-top: 1rem;">
+        <label for="loginPassword">Password</label>
+        <input type="password" id="loginPassword" placeholder="Masukkan password" required />
+      </div>
+      <div id="loginError" class="login-error" style="display:none; color: #ef4444; font-size: 0.85rem; margin-top: 1rem; text-align: center;">
+        Username atau password salah!
+      </div>
+      <button type="submit" class="btn btn-hitung" style="width: 100%; margin-top: 1.5rem;">Masuk Aplikasi</button>
+    </form>
+  </div>
+</div>
+
 <!-- ==================== HALAMAN WELCOME ==================== -->
-<div id="page-welcome">
+<div id="page-welcome" style="display:none">
+  <button class="btn-logout-floating" onclick="handleLogout()" title="Keluar dari Aplikasi">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+      <polyline points="16 17 21 12 16 7"></polyline>
+      <line x1="21" y1="12" x2="9" y2="12"></line>
+    </svg>
+    <span>Logout</span>
+  </button>
   <div class="welcome-bg-shapes">
     <div class="wshape wshape-1"></div>
     <div class="wshape wshape-2"></div>
@@ -225,11 +265,13 @@
         <span class="logo-sub">Simulasi Iuran — Program <strong id="programLabel">PU</strong></span>
       </div>
     </div>
-    <div class="header-badges">
-      <span class="badge badge-jkk">JKK</span>
-      <span class="badge badge-jkm">JKM</span>
-      <span class="badge badge-jht">JHT</span>
-      <span class="badge badge-jp">JP</span>
+    <div class="header-right-area" style="display:flex; align-items:center; gap:1rem;">
+      <div class="header-badges">
+        <span class="badge badge-jkk">JKK</span>
+        <span class="badge badge-jkm">JKM</span>
+        <span class="badge badge-jht">JHT</span>
+        <span class="badge badge-jp">JP</span>
+      </div>
     </div>
   </div>
   <div class="header-hero-text">

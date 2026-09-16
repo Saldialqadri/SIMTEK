@@ -4,6 +4,52 @@
 'use strict';
 
 let jabatanList = [];
+
+// ==================== LOGIN SYSTEM ====================
+function handleLogin(event) {
+  event.preventDefault();
+  const user = document.getElementById('loginUsername').value;
+  const pass = document.getElementById('loginPassword').value;
+  const error = document.getElementById('loginError');
+
+  // Hardcoded check
+  if (user === 'randisimtek' && pass === 'Ras@164280') {
+    sessionStorage.setItem('isLoggedIn', 'true');
+    document.getElementById('page-login').style.display = 'none';
+    document.getElementById('page-welcome').style.display = 'flex';
+  } else {
+    error.style.display = 'block';
+  }
+}
+
+function handleLogout() {
+  sessionStorage.removeItem('isLoggedIn');
+  document.getElementById('page-welcome').style.display = 'none';
+  document.getElementById('page-kalkulator').style.display = 'none';
+  document.getElementById('page-login').style.display = 'flex';
+  
+  const userEl = document.getElementById('loginUsername');
+  const passEl = document.getElementById('loginPassword');
+  const errEl = document.getElementById('loginError');
+  if (userEl) userEl.value = '';
+  if (passEl) passEl.value = '';
+  if (errEl) errEl.style.display = 'none';
+}
+
+function checkLoginState() {
+  if (sessionStorage.getItem('isLoggedIn') === 'true') {
+    document.getElementById('page-login').style.display = 'none';
+    document.getElementById('page-welcome').style.display = 'flex';
+  } else {
+    document.getElementById('page-login').style.display = 'flex';
+    document.getElementById('page-welcome').style.display = 'none';
+    document.getElementById('page-kalkulator').style.display = 'none';
+  }
+}
+
+// Run on page load
+window.addEventListener('DOMContentLoaded', checkLoginState);
+
 let rowCounter = 0;
 let uploadedFiles = []; // Array to store { name, type, data, isImage }
 
